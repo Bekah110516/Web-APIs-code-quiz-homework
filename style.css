@@ -1,3 +1,4 @@
+
 #container{
     margin : 20px auto;
     background-color: white;
@@ -109,7 +110,7 @@
     text-align: center;
 }
 
-.initialsHere {
+#initialsHere {
     padding-top: 149px;
     padding-left: 37%;
     width: 66%;
@@ -118,8 +119,9 @@
     padding-left: 61px;
 }
 
-
-
+#scoreBoard {
+color: white;
+}
 
 
 

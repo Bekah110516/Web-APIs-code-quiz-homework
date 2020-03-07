@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body background="codeimage.jpg">
     <div id="container">
         <div id="start">Click to Start the Code Quiz!</div>
         <div id="quiz" style="display: none">
@@ -27,7 +27,7 @@
         </div>
         <div id="scoreContainer" style="display: none">
 
-            <div class="initialsHere">
+            <div id="initialsHere">
                 <input type="text" class="form-control" placeholder="Enter your initials"
                     aria-label="Enter your initials" aria-describedby="button-addon2">
                 <div class="input-group-append" id="initialsButton">
@@ -35,9 +35,19 @@
                 </div>
             </div>
 
-            
+
         </div>
-        <div id="scoreBoard" style= "display:none">Score Board </div>
+        <div id="scoreBoard" style="display:none"><b>Score Board</b>
+            <div id = "listOfScores">
+                <ul class="list-group">
+                    <li class="list-group-item"></li>
+                    <li class="list-group-item"></li>
+                    <li class="list-group-item"></li>
+                    <li class="list-group-item"></li>
+                    <li class="list-group-item"></li>
+                </ul>
+            </div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>

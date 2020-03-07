@@ -24,25 +24,26 @@ var timeGauge = document.getElementById("timeGauge");
 var scoreDiv = document.getElementById("scoreContainer");
 var initialsInput = document.getElementById("initialsHere")
 var submitButton = document.getElementById("button-addon2")
+var scoreBoard = document.getElementById("scoreBoard")
 
 //  quiz questions
 var questions = [
     {
-        question: "What does DOM stand for?",
+        question: "1. What does DOM stand for?",
         choiceA: "A) Domain Object Model",
         choiceB: "B) Dominant Object Manipulation",
         choiceC: "C) Don't Order Meatloaf",
         correct: "A"
     }, {
-        question: "In JavaScript, what is an 'action' performed on an object called?",
+        question: "2. In JavaScript, what is an 'action' performed on an object called?",
         choiceA: "A) A variable",
         choiceB: "B) A property",
         choiceC: "C) A method",
         correct: "C"
-    }, 
+    },
 
     {
-        question: "What does the 'i' stand for in a for loop?",
+        question: "3. What does the 'i' stand for in a for loop?",
         choiceA: "A) integer",
         choiceB: "B) index",
         choiceC: "C) indicate",
@@ -50,60 +51,70 @@ var questions = [
     },
 
     {
-        question: "How do you separate objects in an arrray?",
-        choiceA: "A) with a colon.... :' ", 
-        choiceB: "B) with a period.... . ", 
-        choiceC: "C) with a comma... , ", 
+        question: "4. How do you separate objects in an arrray?",
+        choiceA: "A) with a colon.... : ",
+        choiceB: "B) with a period.... . ",
+        choiceC: "C) with a comma... , ",
         correct: "C"
     },
+{
+    question: "5. What are variables used for in JavaScript Programs?",
+    choiceA: "A) storing numbers, dates, or other values",
+    choiceB: "B) Varying randomly",
+    choiceC: "C) Causing high-school algebra flashbacks",
+    correct: "A",
+}
 ];
 
+//more variables 
 var lastQuestion = questions.length - 1;
 var runningQuestion = 0;
-var count = 0;
+var count = 60;
 var questionTime = 30; // 30s
 var gaugeWidth = 150; // 150px
 var gaugeUnit = gaugeWidth / questionTime;
-var TIMER; 
+var TIMER;
 var score = 0
 
 //FUNCTIONS//
-
 // renders quiz questions
-function renderQuestion(){
+function renderQuestion() {
     var q = questions[runningQuestion];
-    
-    question.innerHTML = "<p>"+ q.question +"</p>";
+
+    question.innerHTML = "<p>" + q.question + "</p>";
     choiceA.innerHTML = q.choiceA;
     choiceB.innerHTML = q.choiceB;
     choiceC.innerHTML = q.choiceC;
 }
 
-start.addEventListener("click",startQuiz);
+start.addEventListener("click", startQuiz);
 
 // starts quiz
-function startQuiz(){
+function startQuiz() {
     start.style.display = "none";
     renderQuestion();
     quiz.style.display = "block";
     //renderProgress();
     renderCounter();
-    TIMER = setInterval(renderCounter,1000); // 1000ms = 1s
+    TIMER = setInterval(renderCounter, 1000); // 1000ms = 1s
 }
 
-// renders counter
-//****NEEDS TO DECREMENT FOR DURATION OF QUIZ
-function renderCounter(){
-    if(count <= questionTime){
+// renders 60 second countdown for duration of quiz 
+function renderCounter() {
+    if (count >= 0) {
         counter.innerHTML = count;
         timeGauge.style.width = count * gaugeUnit + "px";
-        count++;
-    }else{
-        ;
-        if(runningQuestion < lastQuestion){
+        count--;
+    }
+    else {
+        
+        if (runningQuestion < lastQuestion) {
             runningQuestion++;
             renderQuestion();
-        }else{
+
+        } 
+
+        else {
             // end the quiz and show the score
             clearInterval(TIMER);
             scoreRender();
@@ -111,48 +122,44 @@ function renderCounter(){
     }
 }
 
-
-
 // checks if answer is correct
-function checkAnswer(answer){
-    if( answer == questions[runningQuestion].correct){
+function checkAnswer(answer) {
+    if (answer == questions[runningQuestion].correct) {
         // if answer is correct
         score++;
     }
     //count = 0;
-    if(runningQuestion < lastQuestion){
+    if (runningQuestion < lastQuestion) {
         runningQuestion++;
         renderQuestion();
-    }else{
+    } else {
         // end the quiz and show the score
         clearInterval(TIMER);
         scoreRender();
-        
+
     }
 }
 // renders user quiz score
-function scoreRender(){
+function scoreRender() {
     scoreDiv.style.display = "block";
-    
+    scoreBoard.style.display = "block"; 
     // calculates the user's score as a percentage
-    var scorePerCent = Math.round(100 * score/questions.length);
+    var scorePerCent = Math.round(100 * score / questions.length);
 
-    scoreDiv.innerHTML += "<p> You scored " + scorePerCent +"%! </p>";
-   
+    scoreDiv.innerHTML += "<p> You scored " + scorePerCent + "%! </p>";
+    
 }
 
 //****NEEDS TO LOG USER'S INITIALS ON CLICK OF SUBMIT BUTTON****
 
-function submitInitials (){
-   
-   var initials = initialsInput.value;
-   console.log("int" + initials);
-   
-};
-  
-   //submitButton.onclick = submitInitials;
-   //submitButton.onclick(function(){(console.log("hey"))});
-   //submitButton.addEventListener("click",submitInitials);
-
-
-
+ function submitInitials (){
+    var initials = document.getElementById('initialsHere').value;
+    console.log(initials);
+  };
+  var area = document.querySelector('#scoreContainer');
+  area.addEventListener('click', function(event) {
+     if (event.target.id === 'button-addon2') {
+         console.log(event.target);
+         submitInitials();
+     }
+  });
