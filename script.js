@@ -12,7 +12,7 @@ WHEN the game is over
 THEN I can save my initials and score
 */
 
-//Selected elements
+//VARIABLES//
 var start = document.getElementById("start");
 var quiz = document.getElementById("quiz");
 var question = document.getElementById("question");
@@ -47,20 +47,29 @@ var questions = [
         choiceB: "B) index",
         choiceC: "C) indicate",
         correct: "B"
-    }
+    },
+
+    {
+        question: "How do you separate objects in an arrray?",
+        choiceA: "A) with a colon.... :' ", 
+        choiceB: "B) with a period.... . ", 
+        choiceC: "C) with a comma... , ", 
+        correct: "C"
+    },
 ];
 
-// create some variables
 var lastQuestion = questions.length - 1;
 var runningQuestion = 0;
 var count = 0;
-var questionTime = 10; // 10s
+var questionTime = 30; // 30s
 var gaugeWidth = 150; // 150px
 var gaugeUnit = gaugeWidth / questionTime;
-var TIMER;
-var score = 0;
+var TIMER; 
+var score = 0
 
-// render a question
+//FUNCTIONS//
+
+// renders quiz questions
 function renderQuestion(){
     var q = questions[runningQuestion];
     
@@ -72,27 +81,25 @@ function renderQuestion(){
 
 start.addEventListener("click",startQuiz);
 
-// start quiz
+// starts quiz
 function startQuiz(){
     start.style.display = "none";
     renderQuestion();
     quiz.style.display = "block";
     //renderProgress();
-    //renderCounter();
-    startTimer()
+    renderCounter();
     TIMER = setInterval(renderCounter,1000); // 1000ms = 1s
 }
 
-// counter render
-/*function renderCounter(){
+// renders counter
+//****NEEDS TO DECREMENT FOR DURATION OF QUIZ
+function renderCounter(){
     if(count <= questionTime){
         counter.innerHTML = count;
         timeGauge.style.width = count * gaugeUnit + "px";
-        count++
+        count++;
     }else{
-        count = 0;
-        // change progress color to red
-        answerIsWrong();
+        ;
         if(runningQuestion < lastQuestion){
             runningQuestion++;
             renderQuestion();
@@ -102,15 +109,17 @@ function startQuiz(){
             scoreRender();
         }
     }
-}*/
+}
 
-// checkAnswer
+
+
+// checks if answer is correct
 function checkAnswer(answer){
     if( answer == questions[runningQuestion].correct){
-        // answer is correct
+        // if answer is correct
         score++;
     }
-    count = 0;
+    //count = 0;
     if(runningQuestion < lastQuestion){
         runningQuestion++;
         renderQuestion();
@@ -121,41 +130,29 @@ function checkAnswer(answer){
         
     }
 }
-
-// score render
+// renders user quiz score
 function scoreRender(){
     scoreDiv.style.display = "block";
     
-    // calculate the amount of question percent answered by the user
+    // calculates the user's score as a percentage
     var scorePerCent = Math.round(100 * score/questions.length);
 
-    scoreDiv.innerHTML += "<p>"+ scorePerCent +"%</p>";
-   submitInitials()
+    scoreDiv.innerHTML += "<p> You scored " + scorePerCent +"%! </p>";
+   
 }
 
-
-submitButton.addEventListener("click",submitInitials)
+//****NEEDS TO LOG USER'S INITIALS ON CLICK OF SUBMIT BUTTON****
 
 function submitInitials (){
-   console.log (initialsInput.value); 
-}
-// 5 minute timer 
-function startTimer(duration, display) {
-    var timer = duration, minutes, seconds;
-    setInterval(function () {
-        minutes = parseInt(timer / 60, 10);
-        seconds = parseInt(timer % 60, 10);
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-        display.textContent = minutes + ":" + seconds;
-        if (--timer < 0) {
-            timer = duration;
-        }   if (timer == 0)
-        alert("Time's Up!");
-    }, 1000);
-}
-window.onload = function () {
-    var fiveMinutes = 60 * 5;
-       counter.display = "block";
-    startTimer(fiveMinutes, display);
+   
+   var initials = initialsInput.value;
+   console.log("int" + initials);
+   
 };
+  
+   //submitButton.onclick = submitInitials;
+   //submitButton.onclick(function(){(console.log("hey"))});
+   //submitButton.addEventListener("click",submitInitials);
+
+
+

@@ -85,19 +85,10 @@
     margin-top : -10px;
     margin-left : 25px;
 }
-#progress{
-    width : 500px;
-    position: absolute;
-    bottom : 0px;
-    right : 0px;
-    padding:5px;
-    text-align: right;
-}
 
 #scoreContainer{
     margin : 20px auto;
     background-color: white;
-    opacity: 0.8;
     height: 300px;
     width : 700px;
     border-radius: 5px;
@@ -105,25 +96,21 @@
     position: relative;
     display: none;
 }
-#scoreContainer img{
-    position: absolute;
-    top:100px;
-    left:325px;
-}
+
 #scoreContainer p{
     position: absolute;
     display: block;
-    width : 59px;
-    height :59px;
-    top:130px;
-    left:325px;
+    width: 64px;
+    height: 59px;
+    top: 32px;
+    left: 317px;
     font-size: 1.5em;
     font-weight: bold;
     text-align: center;
 }
 
 .initialsHere {
-    padding-top: 177px;
+    padding-top: 149px;
     padding-left: 37%;
     width: 66%;
 }
