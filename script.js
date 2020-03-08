@@ -22,7 +22,7 @@ var choiceC = document.getElementById("C");
 var counter = document.getElementById("counter");
 var timeGauge = document.getElementById("timeGauge");
 var scoreDiv = document.getElementById("scoreContainer");
-var initialsHere = document.getElementById("initialsHere")
+var initials = document.getElementById("initialsField")
 var submitButton = document.getElementById("submitButton")
 var scoreBoard = document.getElementById("scoreBoard")
 var scoreItem = document.getElementsByClassName("scoreItem")
@@ -152,7 +152,7 @@ function scoreRender() {
 //****NEEDS TO LOG USER'S INITIALS ON CLICK OF SUBMIT BUTTON BUT NOT FUNCTIONING CORRECTLY****
 
 function submitInitials() {
-    var initials = document.getElementById('initialsHere').value;
+    var initials = document.getElementById('initialsField').value;
     console.log(initials);
 };
 var area = document.querySelector('#scoreContainer');
@@ -162,5 +162,6 @@ area.addEventListener('click', function (event) {
         submitInitials();
     }
 });
+
 
  //****WOULD THEN NEED A FUNCTION THAT APPENDS SCORE AND INITIALS TO THE SCOREBOARD li's*/
