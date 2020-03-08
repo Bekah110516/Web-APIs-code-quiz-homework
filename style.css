@@ -82,7 +82,7 @@
 #timeGauge{
     height : 10px;
     border-radius: 10px;
-    background-color: mediumseagreen;
+    background-color:
     margin-top : -10px;
     margin-left : 25px;
 }
@@ -108,6 +108,8 @@
     font-size: 1.5em;
     font-weight: bold;
     text-align: center;
+    color: lightseagreen;
+   
 }
 
 #initialsHere {
@@ -120,7 +122,14 @@
 }
 
 #scoreBoard {
-color: white;
+color: aquamarine;
+
+}
+
+#listOfScores{
+    color:  lightseagreen;
+    font-size: 20px;
+    font-weight: bolder
 }
 
 

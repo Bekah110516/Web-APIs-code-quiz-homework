@@ -3,15 +3,30 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Quiz</title>
+    <title>Code Quiz</title>
+    <!--BootStrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!--Custom CSS-->
     <link rel="stylesheet" href="style.css">
 </head>
+<!--Background image-->
 
 <body background="codeimage.jpg">
+    <!--Quiz container-->
     <div id="container">
-        <div id="start">Click to Start the Code Quiz!</div>
+        <!--Displays on site load-->
+        <div id="start">
+            Ready
+            </br>
+            for a
+            </br>
+            Code Quiz?
+            </br>
+            </br>
+            Click Here!
+        </div>
+        <!--Displays after click event-->
         <div id="quiz" style="display: none">
             <div id="question"></div>
             <div id="choices">
@@ -19,36 +34,41 @@
                 <div class="choice" id="B" onclick="checkAnswer('B')"></div>
                 <div class="choice" id="C" onclick="checkAnswer('C')"></div>
             </div>
+
+            <!--timer-->
             <div id="timer" style="display: block">
                 <div id="counter"></div>
                 <div id="btimeGauge"></div>
                 <div id="timeGauge"></div>
             </div>
         </div>
+        <!--score display and input for initials-->
         <div id="scoreContainer" style="display: none">
 
             <div id="initialsHere">
                 <input type="text" class="form-control" placeholder="Enter your initials"
                     aria-label="Enter your initials" aria-describedby="button-addon2">
                 <div class="input-group-append" id="initialsButton">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Submit</button>
+                    <button class="btn btn-outline-secondary" type="button" id="submitButton">Submit</button>
                 </div>
             </div>
 
 
         </div>
-        <div id="scoreBoard" style="display:none"><b>Score Board</b>
-            <div id = "listOfScores">
+        <!--scoreboard-->
+        <div id="scoreBoard" style="display:none">
+            <div id="listOfScores">
                 <ul class="list-group">
-                    <li class="list-group-item"></li>
-                    <li class="list-group-item"></li>
-                    <li class="list-group-item"></li>
-                    <li class="list-group-item"></li>
-                    <li class="list-group-item"></li>
+                    <li class="list-group-item">Score Board</li>
+                    <li class="list-group-item scoreStorage"></li>
+                    <li class="list-group-item scoreStorage"></li>
+                    <li class="list-group-item scoreStorage"></li>
+                    <li class="list-group-items scoreStorage"></li>
                 </ul>
             </div>
         </div>
     </div>
+    <!--External JavaScript link-->
     <script src="script.js"></script>
 </body>
 

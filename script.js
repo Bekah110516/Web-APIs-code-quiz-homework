@@ -22,10 +22,10 @@ var choiceC = document.getElementById("C");
 var counter = document.getElementById("counter");
 var timeGauge = document.getElementById("timeGauge");
 var scoreDiv = document.getElementById("scoreContainer");
-var initialsInput = document.getElementById("initialsHere")
-var submitButton = document.getElementById("button-addon2")
+var initialsHere = document.getElementById("initialsHere")
+var submitButton = document.getElementById("submitButton")
 var scoreBoard = document.getElementById("scoreBoard")
-
+var scoreItem = document.getElementsByClassName("scoreItem")
 //  quiz questions
 var questions = [
     {
@@ -57,20 +57,20 @@ var questions = [
         choiceC: "C) with a comma... , ",
         correct: "C"
     },
-{
-    question: "5. What are variables used for in JavaScript Programs?",
-    choiceA: "A) storing numbers, dates, or other values",
-    choiceB: "B) Varying randomly",
-    choiceC: "C) Causing high-school algebra flashbacks",
-    correct: "A",
-}
+    {
+        question: "5. What are variables used for in JavaScript Programs?",
+        choiceA: "A) storing numbers, dates, or other values",
+        choiceB: "B) Varying randomly",
+        choiceC: "C) Causing high-school algebra flashbacks",
+        correct: "A",
+    }
 ];
 
 //more variables 
 var lastQuestion = questions.length - 1;
 var runningQuestion = 0;
-var count = 60;
-var questionTime = 30; // 30s
+var count = 60; //60s
+var questionTime = 60; // 60s
 var gaugeWidth = 150; // 150px
 var gaugeUnit = gaugeWidth / questionTime;
 var TIMER;
@@ -106,13 +106,12 @@ function renderCounter() {
         timeGauge.style.width = count * gaugeUnit + "px";
         count--;
     }
+
     else {
-        
         if (runningQuestion < lastQuestion) {
             runningQuestion++;
             renderQuestion();
-
-        } 
+        }
 
         else {
             // end the quiz and show the score
@@ -139,27 +138,29 @@ function checkAnswer(answer) {
 
     }
 }
-// renders user quiz score
+// renders quiz score
 function scoreRender() {
     scoreDiv.style.display = "block";
-    scoreBoard.style.display = "block"; 
+    scoreBoard.style.display = "block";
     // calculates the user's score as a percentage
     var scorePerCent = Math.round(100 * score / questions.length);
 
     scoreDiv.innerHTML += "<p> You scored " + scorePerCent + "%! </p>";
-    
+
 }
 
-//****NEEDS TO LOG USER'S INITIALS ON CLICK OF SUBMIT BUTTON****
+//****NEEDS TO LOG USER'S INITIALS ON CLICK OF SUBMIT BUTTON BUT NOT FUNCTIONING CORRECTLY****
 
- function submitInitials (){
+function submitInitials() {
     var initials = document.getElementById('initialsHere').value;
     console.log(initials);
-  };
-  var area = document.querySelector('#scoreContainer');
-  area.addEventListener('click', function(event) {
-     if (event.target.id === 'button-addon2') {
-         console.log(event.target);
-         submitInitials();
-     }
-  });
+};
+var area = document.querySelector('#scoreContainer');
+area.addEventListener('click', function (event) {
+    if (event.target.id === "submitButton") {
+        console.log(event.target);
+        submitInitials();
+    }
+});
+
+ //****WOULD THEN NEED A FUNCTION THAT APPENDS SCORE AND INITIALS TO THE SCOREBOARD li's*/
